@@ -1,6 +1,6 @@
-# CLI (Bash >= 3)
+# CLI (Bash)
 
-Helper functions for your daily-routine work in CLI. Execute `clib` for help.
+Helper functions for your daily-routine work in CLI. Execute `clib [command]` for help.
 
 ## Installation
 
