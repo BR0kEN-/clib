@@ -124,7 +124,8 @@ jira()
 # g latin site: wikipedia.org
 #
 # @param <string> $query
-g() {
+g()
+{
   clibVariables
 
   local query="$@"
