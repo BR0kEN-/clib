@@ -70,15 +70,16 @@ logMessage()
 # @return <int>
 clone()
 {
-  if [ -n "${1}" ]; then
+  if [[ -n "${1}" && -n "${2}" ]]; then
     clibVariables
+    local host="CLIB_CLONE_${1}"
 
-    if [ -z "${!1}" ]; then
+    if [ -z "${!host}" ]; then
       logMessage "The \"${1}\" host does not exist." 1
       return 1
     fi
 
-    local url="${!1}${2}.git"
+    local url="${!host}${2}.git"
     logMessage "Check repo existense: ${url}"
 
     git ls-remote --exit-code ${url} > /dev/null 2>&1
@@ -88,10 +89,9 @@ clone()
         git clone ${url} ${@:3}
         ;;
       128)
-        logMessage "Project \"${2}\" at \"${1}\" host does not exist." $?
+        logMessage "Project \"${2}\" at \"${url}\" does not exist." $?
         ;;
       *)
-        break
         ;;
     esac
   fi
@@ -108,7 +108,7 @@ jira()
 
   local project=${1%%-*}
   local task_id=${1##*-}
-  local url="${jira}/browse/${project}"
+  local url="${CLIB_jira}/browse/${project}"
 
   if [ "${project}" != "${task_id}" ]; then
     url+="-${task_id}?jql=project=${project}"
@@ -128,5 +128,5 @@ g() {
   clibVariables
 
   local query="$@"
-  open "${google}/search?q=${query}"
+  open "${CLIB_google}/search?q=${query}"
 }

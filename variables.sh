@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Git hosts for "clone".
-drupal="git://git.drupal.org/project/"
-ffw="ssh://git@git.propeople.com.ua:2200/"
-gh="git@github.com:"
+: ${CLIB_CLONE_drupal:="git://git.drupal.org/project/"}
+: ${CLIB_CLONE_ffw:="ssh://git@git.propeople.com.ua:2200/"}
+: ${CLIB_CLONE_gh:="git@github.com:"}
 
 # Services URLs.
-google="https://google.com"
-jira="http://jira.propeople.com.ua"
+CLIB_google="https://google.com"
+CLIB_jira="http://jira.propeople.com.ua"

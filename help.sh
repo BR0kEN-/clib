@@ -23,7 +23,7 @@ _help_clone()
   `_doc_yellow "Description:"`
   `_doc_blue "Clone Git repository from remote."`
   `_doc_blue "- all"` `_doc_param "git clone"` `_doc_blue "arguments available"`
-  `_doc_blue "- any host can be added/edited in"` `_doc_param "variables.sh"`
+  `_doc_blue "- any host can be added/overriden in file, where you include the CLIB"`
 
   `_doc_yellow "Examples:"`
   `_doc_blue "clone drupal drupal --branch=7.x"`

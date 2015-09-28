@@ -1,4 +1,4 @@
-# CLI (Bash)
+# CLI (Bash >= 3)
 
 Helper functions for your daily-routine work in CLI. Execute `clib` for help.
 
@@ -21,8 +21,6 @@ The next commands will be available in your shell after installation.
 
 ### clone
 
-Any other host can be easily added/changed in `variables.sh`.
-
 Clone the one of Drupal.org projects.
 
 ```
@@ -39,6 +37,28 @@ Clone from GitHub.
 
 ```
 clone gh br0ken-/tqextension --quiet
+```
+
+Override host.
+
+```
+vim ~/.bash_profile
+CLIB_CLONE_ffw="ssh://git@git.propeople.md/"
+source /usr/local/share/clib/functions.sh
+```
+
+Define new host.
+
+```
+vim ~/.bash_profile
+CLIB_CLONE_bitbucket="git@bitbucket.org:"
+source /usr/local/share/clib/functions.sh
+```
+
+And now, you able to perform:
+
+```
+clone bitbucket br0ken/cs
 ```
 
 **Note**: All native `git clone` arguments are available.
