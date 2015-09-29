@@ -15,13 +15,13 @@ vim ~/.bash_profile
 source /usr/local/share/clib/functions.sh
 ```
 
-## Usage
-
-The next commands will be available in your shell after installation.
-
 ## Update
 
 Execute the `clib update` and latest code will be grabbed from remote.
+
+## Usage
+
+The next commands will be available in your shell after installation.
 
 **Note**: Updating won't work if you installed scripts not via Git.
 
