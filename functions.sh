@@ -1,19 +1,36 @@
 #!/usr/bin/env bash
 
+CLIB_HOME="${BASH_SOURCE%/*}"
+
 clibVariables()
 {
-  . ${BASH_SOURCE%/*}/variables.sh
+  . ${CLIB_HOME}/variables.sh
 }
 
 clib()
 {
-  . ${BASH_SOURCE%/*}/help.sh
+  . ${CLIB_HOME}/help.sh
 
   local fn="_help_${1}"
 
   if [[ $(type -t ${fn}) == "function" ]]; then
     echo "
   $(${fn})"
+  elif [ "${1}" == "update" ]; then
+    cd ${CLIB_HOME}
+    ls .git > /dev/null 2>&1
+
+    if [ $? -gt 0 ]; then
+      logMessage "You've installed the CLIB not by using Git. Package cannot be updated." $?
+    else
+      git pull origin master > /dev/null 2>&1
+
+      if [ $? -eq 0 ]; then
+        logMessage "Complete" $?
+      else
+        logMessage "Failed" $?
+      fi
+    fi
   else
     local line="
   ==============================================================================

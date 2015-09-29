@@ -19,6 +19,12 @@ source /usr/local/share/clib/functions.sh
 
 The next commands will be available in your shell after installation.
 
+## Update
+
+Execute the `clib update` and latest code will be grabbed from remote.
+
+**Note**: Updating won't work if you installed scripts not via Git.
+
 ### clone
 
 Clone the one of Drupal.org projects.
