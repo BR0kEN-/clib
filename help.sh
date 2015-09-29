@@ -30,7 +30,7 @@ _clib_command()
   `_clib_yellow "Examples:"`${3}"
 }
 
-_help_clone()
+_clib_help_clone()
 {
   _clib_command clone "
   Clone Git repository from remote.
@@ -43,7 +43,7 @@ _help_clone()
   " "host" "project" "git clone parameters"
 }
 
-_help_jira()
+_clib_help_jira()
 {
   _clib_command jira "
   Open JIRA project or task in default browser. Project key is insensitive.
@@ -53,12 +53,21 @@ _help_jira()
   " "project"
 }
 
-_help_g()
+_clib_help_g()
 {
   _clib_command g "
-  Perform search in Google. All search syntax available.
+  Perform search using Google. All search syntax available.
   " "
   g rammstein
   g latin site: wikipedia.org
+  " "query"
+}
+
+_clib_help_so()
+{
+  _clib_command so "
+  Perform search on StackOverflow.
+  " "
+  so how to install php
   " "query"
 }

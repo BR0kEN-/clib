@@ -100,3 +100,11 @@ g latin site: wikipedia.org
 ```
 
 **Note**: All Google search syntax are available.
+
+### so
+
+Useful alias for `g [query] site: stackoverflow.com`
+
+```shell
+so how to install php
+```

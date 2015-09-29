@@ -11,7 +11,8 @@ clib()
 {
   . ${CLIB_HOME}/help.sh
 
-  local fn="_help_${1}"
+  local prefix="_clib_help_"
+  local fn="${prefix}${1}"
 
   if [[ $(type -t ${fn}) == "function" ]]; then
     echo "
@@ -32,13 +33,13 @@ clib()
       fi
     fi
   else
-    local line="
-  ==============================================================================
-"
-    echo "
-  `_help_clone`${line}
-  `_help_jira`${line}
-  `_help_g`"
+    local functions=$(declare -F | grep ${prefix})
+
+    for fn in ${functions//declare -f/}; do
+      echo "
+  $(${fn})
+  =============================================================================="
+    done
   fi
 }
 
@@ -129,11 +130,7 @@ jira()
   open ${url}
 }
 
-# Perform Google search query from CLI.
-#
-# @example
-# g rammstein
-# g latin site: wikipedia.org
+# Perform search using Google.
 #
 # @param <string> $query
 g()
@@ -142,4 +139,12 @@ g()
 
   local query="$@"
   open "${CLIB_google}/search?q=${query}"
+}
+
+# Perform search on StackOverflow.
+#
+# @param <string> $query
+so()
+{
+  g $@ site: stackoverflow.com
 }
