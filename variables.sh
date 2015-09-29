@@ -6,5 +6,5 @@
 : ${CLIB_CLONE_gh:="git@github.com:"}
 
 # Services URLs.
-CLIB_google="https://google.com"
-CLIB_jira="http://jira.propeople.com.ua"
+: ${CLIB_google:="https://google.com"}
+: ${CLIB_jira:="http://jira.propeople.com.ua"}
