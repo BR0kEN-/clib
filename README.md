@@ -108,3 +108,11 @@ Useful alias for `g [query] site: stackoverflow.com`
 ```shell
 so how to install php
 ```
+
+### t
+
+Open your favorite online translator.
+
+```shell
+t
+```

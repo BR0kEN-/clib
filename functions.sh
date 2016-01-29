@@ -12,12 +12,12 @@ clib()
   . ${CLIB_HOME}/help.sh
 
   local prefix="_clib_help_"
-  local fn="${prefix}${1}"
+  local fn="${prefix}$1"
 
   if [[ $(type -t ${fn}) == "function" ]]; then
     echo "
   $(${fn})"
-  elif [ "${1}" == "update" ]; then
+  elif [ "$1" == "update" ]; then
     cd ${CLIB_HOME}
     ls .git > /dev/null 2>&1
 
@@ -49,8 +49,8 @@ clib()
 # @param <int> $color_code
 coloredMessage()
 {
-  if [[ -n "${1}" && -n "${2}" ]]; then
-    echo "$(tput setaf ${2})${1}$(tput sgr0)"
+  if [[ -n "$1" && -n "$2" ]]; then
+    echo "$(tput setaf $2)$1$(tput sgr0)"
   fi
 }
 
@@ -60,18 +60,18 @@ coloredMessage()
 # @param <int> [$status_code=$?]
 logMessage()
 {
-  if [ -n "${1}" ]; then
+  if [ -n "$1" ]; then
     local color=2
     local status="ok"
 
-    if [[ -n ${2} && ${2} -gt 0 ]]; then
+    if [ $2 -gt 0 ]; then
       color=1
       status="error"
     fi
 
     status="[${status}]"
 
-    printf "${1}%$(($(tput cols)+${#status}-${#1}))s\n" $(coloredMessage ${status} ${color})
+    printf "$1%$(($(tput cols)+${#status}-${#1}))s\n" $(coloredMessage ${status} ${color})
   fi
 }
 
@@ -83,17 +83,17 @@ logMessage()
 # @return <int>
 clone()
 {
-  if [[ -n "${1}" && -n "${2}" ]]; then
+  if [[ -n "$1" && -n "$2" ]]; then
     clibVariables
-    local host="CLIB_CLONE_${1}"
+    local host="CLIB_CLONE_$1"
 
     if [ -z "${!host}" ]; then
-      logMessage "The \"${1}\" host does not exist." 1
+      logMessage "The \"$1\" host does not exist." 1
       return 1
     fi
 
-    local url="${!host}${2}.git"
-    logMessage "Check repo existense: ${url}"
+    local url="${!host}$2.git"
+    logMessage "Check repo existence: ${url}"
 
     git ls-remote --exit-code ${url} > /dev/null 2>&1
 
@@ -102,7 +102,7 @@ clone()
         git clone ${url} ${@:3}
         ;;
       128)
-        logMessage "Project \"${2}\" at \"${url}\" does not exist." $?
+        logMessage "Project \"$2\" at \"${url}\" does not exist." $?
         ;;
       *)
         ;;
@@ -147,4 +147,12 @@ g()
 so()
 {
   g $@ site: stackoverflow.com
+}
+
+# Open your favorite online translator.
+t()
+{
+  clibVariables
+
+  open "${CLIB_translator}"
 }
