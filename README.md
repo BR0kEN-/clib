@@ -111,8 +111,8 @@ so how to install php
 
 ### t
 
-Open your favorite online translator.
+Open Google Trnaslator.
 
 ```shell
-t
+t [query]
 ```
