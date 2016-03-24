@@ -64,7 +64,7 @@ logMessage()
     local color=2
     local status="ok"
 
-    if [ $2 -gt 0 ]; then
+    if [[ -n "$2" && $2 -gt 0 ]]; then
       color=1
       status="error"
     fi
@@ -154,5 +154,6 @@ t()
 {
   clibVariables
 
-  open "${CLIB_translator}"
+  local query="$@"
+  open "https://translate.google.com?sl=auto&tl=ru&q=${query}"
 }
