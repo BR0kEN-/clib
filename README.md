@@ -15,6 +15,14 @@ vim ~/.bash_profile
 source /usr/local/share/clib/functions.sh
 ```
 
+**NOTE**! If you are not a Mac OS user, then create an alias for the `open` command inside of one of available boot files for your shell (e.g. `~/.profile`, `~/.bash_profile`, `/etc/bashrc` etc.).
+
+Example for Ubuntu:
+
+```shell
+alias open="sensible-browser"
+```
+
 ## Update
 
 Execute the `clib update` and latest code will be grabbed from remote.
