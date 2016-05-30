@@ -35,22 +35,30 @@ The next commands will be available in your shell after installation.
 
 ### clone
 
-Clone the one of Drupal.org projects.
+All arguments for `git clone` are available and can be passed after first couple.
+
+#### Clone from Drupal.org.
 
 ```shell
-clone drupal fpp_bundles --branch=7.x-1.x
+clone drupal fpp_bundles
 ```
 
-Clone from FFW (UA) GitLab.
+#### Clone from FFW (UA) GitLab.
 
 ```shell
-clone ffw sla/unga unga-project
+clone ffw sla/unga
 ```
 
-Clone from GitHub.
+#### Clone from GitHub.
 
 ```shell
-clone gh br0ken-/tqextension --quiet
+clone gh br0ken-/tqextension
+```
+
+#### Clone from BitBucket.
+
+```shell
+clone bb br0ken/gta
 ```
 
 Override host.
