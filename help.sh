@@ -33,13 +33,12 @@ _clib_command()
 _clib_help_clone()
 {
   _clib_command clone "
-  Clone Git repository from remote.
-  - all `_clib_green "git clone"` arguments available
-  - any host can be added/overriden in file, where you include the CLIB
+  Clone Git repository. All `_clib_green "git clone"` arguments are available.
   " "
   clone drupal drupal --branch=7.x
   clone ffw sla/unga test
   clone gh br0ken-/tqextension --quiet
+  clone bb br0ken/gta --bare
   " "host" "project" "git clone parameters"
 }
 
