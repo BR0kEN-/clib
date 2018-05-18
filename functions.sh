@@ -93,7 +93,7 @@ clone()
     fi
 
     local url="${!host}$2.git"
-    logMessage "Check repo existence: ${url}"
+    logMessage "Check repo existence: $url"
 
     git ls-remote --exit-code ${url} > /dev/null 2>&1
 
@@ -102,7 +102,7 @@ clone()
         git clone ${url} ${@:3}
         ;;
       128)
-        logMessage "Project \"$2\" at \"${url}\" does not exist." $?
+        logMessage "Project \"$2\" at \"$url\" does not exist." $?
         ;;
       *)
         ;;
@@ -121,10 +121,10 @@ jira()
 
   local project=${1%%-*}
   local task_id=${1##*-}
-  local url="${CLIB_jira}/browse/${project}"
+  local url="$CLIB_jira/browse/$project"
 
-  if [ "${project}" != "${task_id}" ]; then
-    url+="-${task_id}?jql=project=${project}"
+  if [ "$project" != "$task_id" ]; then
+    url+="-$task_id?jql=project=$project"
   fi
 
   open ${url}
@@ -138,7 +138,7 @@ g()
   clibVariables
 
   local query="$@"
-  open "${CLIB_google}/search?q=${query}"
+  open "$CLIB_google/search?q=$query"
 }
 
 # Perform search on StackOverflow.
@@ -155,5 +155,26 @@ t()
   clibVariables
 
   local query="$@"
-  open "https://translate.google.com?sl=auto&tl=ru&q=${query}"
+  open "https://translate.google.com?sl=auto&tl=ru&q=$query"
+}
+
+# Open page of of a project on Drupal.org (dp - Drupal project).
+#
+# @param <string> $project_machine_name
+# @param <string> $subpage_id
+#   The alias of a project subpage (only "git" supported at the moment).
+dp()
+{
+  if [ -z "$1" ]; then
+    logMessage "You have to pass the machine name of a project on Drupal.org." 2
+    return 2
+  fi
+
+  local query="https://www.drupal.org/project/$1"
+
+  if [ "$2" == "git" ]; then
+    query+="/git-instructions"
+  fi
+
+  open "$query"
 }
